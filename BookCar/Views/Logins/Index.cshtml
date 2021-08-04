@@ -1,0 +1,44 @@
+﻿@model IEnumerable<BookCar.Models.Login>
+
+@{
+    ViewData["CarModel"] = "Index";
+}
+
+@{ Layout = "_Layout2"; }
+<br />
+<p>
+    <a asp-action="Create" type="button" class="btn btn-info">Register User</a>
+</p>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" type="button" class="btn btn-warning">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" type="button" class="btn btn-info">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" type="button" class="btn btn-warning">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-controller="Logins" asp-action="Zone" type="button" class="btn btn-warning">Back To Home</a>
+</div>

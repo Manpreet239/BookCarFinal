@@ -1,0 +1,53 @@
+﻿@model IEnumerable<BookCar.Models.Cars>
+
+@{ ViewData["CarModel"] = "Home"; }
+@{
+    Layout = "_Layout2";
+}
+<br />
+<p>
+    <a asp-action="Create">Click here to Add Car</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CarName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarModel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarAge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarPrice)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.CarName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CarModel)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CarAge)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CarPrice)
+    </td>
+    <td>
+        <a asp-action="Edit" asp-route-id="@item.Id" type="button" class="btn btn-warning">Edit</a>
+        <a asp-action="Details" asp-route-id="@item.Id" type="button" class="btn btn-warning">Details</a>
+        <a asp-action="Delete" asp-route-id="@item.Id" type="button" class="btn btn-warning">Delete</a>
+    </td>
+</tr>
+        }
+    </tbody>
+</table>

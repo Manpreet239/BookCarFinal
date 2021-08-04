@@ -1,0 +1,53 @@
+﻿@model IEnumerable<BookCar.Models.ContactUs>
+
+@{
+    ViewData["CarModel"] = "Contact Us";
+}
+@{ Layout = "_Layout2"; }
+<br />
+<p>
+    <a asp-action="Create" type="button" class="btn btn-warning">Click here to Contact Us</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Message)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contact)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Message)
+                </td>
+                <td>
+                    <a asp-action="Edit" type="button" class="btn btn-warning" asp-route-id="@item.Id">Edit</a>
+                    <a asp-action="Details" type="button" class="btn btn-warning" asp-route-id="@item.Id">Details</a>
+                    <a asp-action="Delete" type="button" class="btn btn-warning" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
